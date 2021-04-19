@@ -1,19 +1,19 @@
 // Dependencies
 const generateUniqueId = require('generate-unique-id');
- const express = require('express');
-const app = express();
-const PORT = 3000;
+const express = require('express');
 const path = require('path');
 let data = require('./db/db.json');
 
+// Express App
+const app = express();
+const PORT = process.env.PORT || 3000;
 
+// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'))
 
-
 //Routes
-
 app.get('/notes', (req, res) => {
     console.log('PATH HIT!');
     res.sendFile(path.join(__dirname, '/public/notes.html'))
@@ -28,8 +28,7 @@ app.get('*', (req, res) => {
   });
 
 
-
-// Note Handler
+// POST 
 app.post('/api/notes', (req, res) => {
     const newNote = req.body;
     const id = generateUniqueId();
@@ -39,7 +38,7 @@ app.post('/api/notes', (req, res) => {
   });
   
 
-//Delete Requests
+//DELETE
 app.delete('/api/notes/:id', (req, res) => {
   for (let i = 0; i < data.length; i++) {
 
@@ -52,6 +51,7 @@ app.delete('/api/notes/:id', (req, res) => {
 res.sendFile(path.join(__dirname, '/public/notes.html'))
 
 });
+
 // Starts server
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
