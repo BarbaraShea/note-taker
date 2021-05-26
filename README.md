@@ -13,4 +13,4 @@ Node Packages:
 https://lit-mesa-01327.herokuapp.com/
 
 # Preview
-![Saved notes are listed in the left-hand column and the user can input new notes on the right-hand side](./Assets/11-express-homework-demo-01.png)
+![Saved notes are listed in the left-hand column and the user can input new notes on the right-hand side](./Assets/note-taker-preview.png)

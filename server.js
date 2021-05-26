@@ -3,6 +3,8 @@ const generateUniqueId = require('generate-unique-id');
 const express = require('express');
 const path = require('path');
 let data = require('./db/db.json');
+var compression = require('compression')
+
 
 // Express App
 const app = express();
@@ -12,6 +14,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'))
+app.use(compression());
 
 //Routes
 app.get('/notes', (req, res) => {
